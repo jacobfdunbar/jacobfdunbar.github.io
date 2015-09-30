@@ -1,3 +1,5 @@
-var welcomeDisplay = function() {
-  alert("Welcome to the website!");
-}
+$(document).ready(function() {
+  $('.nav').mouseenter(function() {
+    this.fadeOut('slow');
+  });
+});
