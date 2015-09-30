@@ -3,10 +3,16 @@
 	<head>
 		<title>Jacob Dunbar</title>
 		<link rel="stylesheet" type="text/css" href="/css/main.css">
-		<script src="js/main.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	</head>
 	<body>
+		<script>
+			$(document).ready(function() {
+				$(".nav").mouseenter(function() {
+					$("this").fadeOut("slowly");
+				});
+			});
+		</script>
 		<nav>
 	    		<ul>
 	        		<li>Home</li>
