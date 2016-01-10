@@ -1,0 +1,178 @@
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+* {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body {
+    background: #f1f1f1 url('.../imgs/bg.jpg');
+    font-family: Arial, Verdana;
+}
+
+#wrapper {
+    margin: 0 auto 100px auto;
+    max-width: 960px;
+}
+
+.viewpoint {
+    list-style: none;
+    padding: 0;
+}
+
+.shape {
+    width: 260px;
+    height: 400px;
+    margin: 30px;
+    float: left;
+    -webkit-perspective: 1000px;
+    -moz-prespective: 1000px;
+    perspective: 1000px;
+}
+
+.book {
+    width: 260px;
+    height: 400px;
+    transform-style: preserve-3d;
+    transform: translateZ(-130px);
+    transition: transform 320ms;
+    cursor: pointer;
+}
+
+.book:hover {
+    -webkit-transform: rotateY(-78deg) translateZ(20px);
+    -moz-transform: rotateY(-78deg) translateZ(20px);
+    transform: rotateY(-78deg) translateZ(20px);
+}
+
+.book .front,
+.book .info {
+    position: absolute;
+    width: 260px;
+    height: 400px;
+    background-color: #fff;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.book .front {
+    -webkit-transform: translateZ(130px);
+    -moz-transform: translateZ(130px);
+    transform: translateZ(130px);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.book .info {
+    -webkit-transform: rotateY(90deg) translateZ(130px);
+    -moz-transform: rotateY(90deg) translateZ(130px);
+    transform: rotateY(90deg) translateZ(130px);
+    border: 1px solid #B8B5B5;
+    font-size: 0.75em;
+}
+
+.book::after {
+    content: '';
+    width: 260px;
+    height: 260px;
+    position: absolute;
+    bottom: 0;
+    box-shadow: 0 30px 50px rgba(0,0,0,0.9);
+    transform-origin: 100% 100%;
+    transform: rotateX(90deg) translateY(130px);
+    transition: box-shadow 350ms;
+}
+
+.book:hover::after {
+    box-shadow: 50px -5px 50px rgba(0,0,0,0.4);   
+}
+
+.info header {
+    color: #FFF;
+    padding: 7px 10px;
+    font-weight: bold;
+    height: 195px;
+    background-repeat: no-repeat;
+    text-shadow: 0px 1px 1px rgba(0,0,0,2);
+}
+
+.info header h1 {
+    margin: 10px 0 0 3px;
+    font-size: 1.3em;
+}
+
+.info header .Year {
+    border: 1px solid #ddd;
+    padding: 1px 3px;
+}
+
+.info p {
+    padding: 1.2em 1.4em;
+    margin: 2px 0 0;
+    font-weight: 700;
+    color: #666;
+    line-height: 1.4em;
+    border-top: 10px solid #555;
+}
+
+.book .front {
+    box-shadow: inset 0px 0px 40px rgba(255,255,255,0);
+}
+
+.book:hover .front {
+    box-shadow: inset 300px 0px 40px rgba(255,255,255,0.8);   
+}
+
+.book .info,
+.book .info header {
+    box-shadow: inset -300px 0px 40px rgba(0,0,0,0.5);   
+}
+
+.book:hover .info,
+.book:hover .info header {
+    box-shadow: inset 0px 0px 40px rgba(0,0,0,0);   
+}
+
+.book .front,
+.book .info,
+.book .info header {
+    -webkit-transition: box-shadow 350ms;
+    -moz-transition: box-shadow 350ms;
+    transition: box-shadow 350ms;
+}
+
+.shape:nth-child(1) .front {
+    background-image: url(../imgs/book01.jpg');   
+}
+
+.shape:nth-child(2) .front {
+    background-image: url(../imgs/book02.jpg');   
+}
+
+.shape:nth-child(3) .front {
+    background-image: url(../imgs/book03.jpg');   
+}
+
+.shape:nth-child(1) .info header {
+    background-image: url(../imgs/innerImg01.jpg');   
+}
+
+.shape:nth-child(2) .info header {
+    background-image: url(../imgs/innerImg02.jpg');   
+}
+
+.shape:nth-child(3) .info header {
+    background-image: url(../imgs/innerImg03.jpg');   
+}
+
+@media screen and (max-width: 480px) {
+    .shape {
+        float: none;
+        margin: 30px auto 60px;
+    }
+}
