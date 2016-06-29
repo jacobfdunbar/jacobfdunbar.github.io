@@ -19,7 +19,11 @@ a {
 a:hover {
     text-decoration: underline;
 }
-h1 {
+.name {
+    float: center;
+    margin: auto;
+}
+.shape-title {
     font-size: 3em;
     font-family:'Helvetica', 'Arial', 'Sans-Serif';
 }
