@@ -1,20 +1,39 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Jacob Dunbar</title>
-		<link rel="stylesheet" type="text/css" href="/css/main.css">
-		<script src="js/main.js"></script>
-  </head>
-  <body>
-    <nav>
-    		<ul>
-        		<li><a href="/">Home</a></li>
-	        	<li><a href="/about">About</a></li>
-	        	<li><a href="/projects">Projects</a></li>
-	        	<li>Contact</li>
-    		</ul>
-		</nav>
-    <h1>Contact Me</h1>
-		<p>You can reach me through email at <b>dunbarj@purdue.edu</b> or by text/call at <b>(812)212-8683</b>.</p>
-  </body>
+    <head>
+        <title>Contact</title>
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="js/main.js"></script>
+    </head>
+    <body>
+        <div class="contact-container">
+            <div class="header">
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li>Contact</li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="secondary-body">
+                <h1>Contact Me</h1>
+                <p>Email: <b>dunbarj@purdue.edu</b></p>
+                <p>Phone: <b>(812)212-8683</b>.</p>
+                <form action="mailto:dunbarj@purdue.edu" method="post" enctype="text/plain">
+                    Name:<br>
+                    <input type="text" name="name"><br>
+                    E-mail:<br>
+                    <input type="text" name="mail"><br>
+                    Comment:<br>
+                    <input type="text" name="comment" size="50"><br><br>
+                    <input type="submit" value="Send">
+                    <input type="reset" value="Reset">
+                </form>
+            </div>
+        </div>
+    </body>
 </html>
