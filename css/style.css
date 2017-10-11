@@ -111,7 +111,7 @@ body {
 .pillar .info {
     position: absolute;
     width: 260px;
-    height: 100px;
+    height: 400px;
     background-color: lightgray;
     -webkit-backface-visibility: hidden;
     -moz-backface-visibility: hidden;
