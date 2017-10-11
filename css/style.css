@@ -136,7 +136,7 @@ body {
 
 .pillar::after {
     content: '';
-    width: 260px;
+    width: 100px;
     height: 260px;
     position: absolute;
     bottom: 0;
