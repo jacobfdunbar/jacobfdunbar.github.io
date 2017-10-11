@@ -111,7 +111,7 @@ body {
 .pillar .info {
     position: absolute;
     width: 260px;
-    height: 400px;
+    height: 100px;
     background-color: lightgray;
     -webkit-backface-visibility: hidden;
     -moz-backface-visibility: hidden;
@@ -136,7 +136,7 @@ body {
 
 .pillar::after {
     content: '';
-    width: 100px;
+    width: 260px;
     height: 260px;
     position: absolute;
     bottom: 0;
