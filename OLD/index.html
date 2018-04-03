@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html land="en">
+	<head>
+        <title>Jacob Dunbar's Portfolio</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/portfolio.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="js/portfolio.js"></script>
+	</head>
+	<body>
+        <div class="container-fluid" id="navhead">
+            <div class="row">
+                <div class="col-sm-3" id="leftnav">
+                    <ul style="list-style: none">
+                        <li id="menu-home"><a class="nav-link"><h3>Home</h3></a></li>
+                        <li id="menu-about"><a class="nav-link"><h3>About</h3></a></li>
+                        <li id="menu-projects"><a class="nav-link"><h3>Projects</h3></a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-9"></div>
+            </div>
+        </div>
+        <div class="bg">
+            <div class="layer">
+                <div class="container-fluid" id="nameplate">
+                    <div class="row">
+                        <div class="col-sm-2"></div>
+                        <div class="col-sm-8"><h1 id="name">Jacob Dunbar</h1></div>
+                        <div class="col-sm-2"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2"></div>
+                        <div class="col-sm-8" id="subtitle"><h3>Programmer, Game Developer</h3></div>
+                        <div class="col-sm-2"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bg2">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-9"></div>
+                    <div class="col-sm-3"></div>
+                </div>
+            </div>
+        </div>
+        <script src="js/three.js"></script>
+        <script>
+            var container, stats;
+			var camera, scene, renderer, raycaster;
+            var touchedCube;
+            var mouse = {
+                x: 0,
+                y: 0
+            };
+			var frustumSize = 10;
+            var lines, cubes;
+            var boxLine;
+			init();
+			animate();
+			function init() {
+                renderer = new THREE.WebGLRenderer();
+                renderer.setSize( window.innerWidth, window.innerHeight );
+                document.body.appendChild( renderer.domElement );
+                raycaster = new THREE.Raycaster();
+				var aspect = window.innerWidth / window.innerHeight;
+				camera = new THREE.OrthographicCamera( frustumSize * aspect / - 2, frustumSize * aspect / 2, frustumSize / 2, frustumSize / - 2, 1, 2000 );
+				scene = new THREE.Scene();
+				scene.background = new THREE.Color( 0x000000 );
+                
+                //Geometries
+                var boxGeo = new THREE.BoxGeometry( 1, 1, 1 );
+				
+                //Cube1
+                var boxMat1 = new THREE.MeshBasicMaterial( { color: 0xffffff } );
+                var cube1 = new THREE.Mesh( boxGeo, boxMat1 );
+                cube1.name = "cube1";
+                cube1.position.set(-2, 2, 0);
+                scene.add(cube1);
+                
+                var lineMat1 = new THREE.LineBasicMaterial({ 
+                    color: 0xfffffff
+                });
+                var lineGeo = new THREE.Geometry();
+                lineGeo.vertices.push(new THREE.Vector3(-2, 2, 0));
+                lineGeo.vertices.push(new THREE.Vector3(0, 2, 0));
+                lineGeo.vertices.push(new THREE.Vector3(1, 3, 0));
+                lineGeo.vertices.push(new THREE.Vector3(2, 3, 0));
+                var line1 = new THREE.Line(lineGeo, lineMat1);
+                scene.add(line1);
+                
+                //Cube2
+                var boxMat2 = new THREE.MeshBasicMaterial( { color: 0xffffff } );
+                var cube2 = new THREE.Mesh( boxGeo, boxMat2 );
+                cube2.name = "cube2";
+                cube2.position.set(-2, 0, 0);
+                scene.add(cube2);
+                
+                var lineMat2 = new THREE.LineBasicMaterial({ 
+                    color: 0xfffffff
+                });
+                lineGeo = new THREE.Geometry();
+                lineGeo.vertices.push(new THREE.Vector3(-2, 0, 0));
+                lineGeo.vertices.push(new THREE.Vector3(0, 0, 0));
+                lineGeo.vertices.push(new THREE.Vector3(1, 1, 0));
+                lineGeo.vertices.push(new THREE.Vector3(2, 1, 0));
+                var line2 = new THREE.Line(lineGeo, lineMat2);
+                scene.add(line2);
+                
+                //Cube3
+                var boxMat3 = new THREE.MeshBasicMaterial( { color: 0xffffff } );
+                var cube3 = new THREE.Mesh( boxGeo, boxMat3 );
+                cube3.name = "cube3";
+                cube3.position.set(-2, -2, 0);
+                scene.add(cube3);
+                
+                var lineMat3 = new THREE.LineBasicMaterial({ 
+                    color: 0xfffffff
+                });
+                lineGeo = new THREE.Geometry();
+                lineGeo.vertices.push(new THREE.Vector3(-2, -2, 0));
+                lineGeo.vertices.push(new THREE.Vector3(0, -2, 0));
+                lineGeo.vertices.push(new THREE.Vector3(1, -1, 0));
+                lineGeo.vertices.push(new THREE.Vector3(2, -1, 0));
+                var line3 = new THREE.Line(lineGeo, lineMat3);
+                scene.add(line3);
+                
+                //Cube4
+                var boxMat4 = new THREE.MeshBasicMaterial( { color: 0xffffff } );
+                var cube4 = new THREE.Mesh( boxGeo, boxMat4 );
+                cube4.name = "cube4";
+                cube4.position.set(-4, 3, 0);
+                scene.add(cube4);
+                
+                var lineMat4 = new THREE.LineBasicMaterial({ 
+                    color: 0xfffffff
+                });
+                lineGeo = new THREE.Geometry();
+                lineGeo.vertices.push(new THREE.Vector3(-4, 3, 0));
+                lineGeo.vertices.push(new THREE.Vector3(0, 3, 0));
+                lineGeo.vertices.push(new THREE.Vector3(1, 4, 0));
+                lineGeo.vertices.push(new THREE.Vector3(2, 4, 0));
+                var line4 = new THREE.Line(lineGeo, lineMat4);
+                scene.add(line4);
+                
+                //Cube5
+                var boxMat5 = new THREE.MeshBasicMaterial( { color: 0xffffff } );
+                var cube5 = new THREE.Mesh( boxGeo, boxMat5 );
+                cube5.name = "cube5";
+                cube5.position.set(-4, 1, 0);
+                scene.add(cube5);
+                
+                var lineMat5 = new THREE.LineBasicMaterial({ 
+                    color: 0xfffffff
+                });
+                lineGeo = new THREE.Geometry();
+                lineGeo.vertices.push(new THREE.Vector3(-4, 1, 0));
+                lineGeo.vertices.push(new THREE.Vector3(0, 1, 0));
+                lineGeo.vertices.push(new THREE.Vector3(1, 2, 0));
+                lineGeo.vertices.push(new THREE.Vector3(2, 2, 0));
+                var line5 = new THREE.Line(lineGeo, lineMat5);
+                scene.add(line5);
+                
+                //Cube6
+                var boxMat6 = new THREE.MeshBasicMaterial( { color: 0xffffff } );
+                var cube6 = new THREE.Mesh( boxGeo, boxMat6 );
+                cube6.name = "cube6";
+                cube6.position.set(-4, -1, 0);
+                scene.add(cube6);
+                
+                var lineMat6 = new THREE.LineBasicMaterial({ 
+                    color: 0xfffffff
+                });
+                lineGeo = new THREE.Geometry();
+                lineGeo.vertices.push(new THREE.Vector3(-4, -1, 0));
+                lineGeo.vertices.push(new THREE.Vector3(0, -1, 0));
+                lineGeo.vertices.push(new THREE.Vector3(1, 0, 0));
+                lineGeo.vertices.push(new THREE.Vector3(2, 0, 0));
+                var line6 = new THREE.Line(lineGeo, lineMat6);
+                scene.add(line6);
+                
+                //Cube7
+                var boxMat7 = new THREE.MeshBasicMaterial( { color: 0xffffff } );
+                var cube7 = new THREE.Mesh( boxGeo, boxMat7 );
+                cube7.name = "cube7";
+                cube7.position.set(-4, -3, 0);
+                scene.add(cube7);
+                
+                var lineMat7 = new THREE.LineBasicMaterial({ 
+                    color: 0xfffffff
+                });
+                lineGeo = new THREE.Geometry();
+                lineGeo.vertices.push(new THREE.Vector3(-4, -3, 0));
+                lineGeo.vertices.push(new THREE.Vector3(0, -3, 0));
+                lineGeo.vertices.push(new THREE.Vector3(1, -2, 0));
+                lineGeo.vertices.push(new THREE.Vector3(2, -2, 0));
+                var line7 = new THREE.Line(lineGeo, lineMat7);
+                scene.add(line7);
+                
+                //Box
+                var boxLineMat = new THREE.LineBasicMaterial({ 
+                    color: 0xffffff
+                });
+                lineGeo = new THREE.Geometry();
+                lineGeo.vertices.push(new THREE.Vector3(2, 4.5, 0));
+                lineGeo.vertices.push(new THREE.Vector3(8, 4.5, 0));
+                lineGeo.vertices.push(new THREE.Vector3(8, -4.5, 0));
+                lineGeo.vertices.push(new THREE.Vector3(2, -4.5, 0));
+                lineGeo.vertices.push(new THREE.Vector3(2, 4.5, 0));
+                boxLine = new THREE.Line(lineGeo, boxLineMat);
+                scene.add(boxLine);
+                
+                
+                //Box and Line arrays
+                lines = [line1, line2, line3, line4, line5, line6, line7];
+                cubes = [cube1, cube2, cube3, cube4, cube5, cube6, cube7];
+                
+                window.addEventListener('mousemove', onMouseMove, false);
+				window.addEventListener( 'resize', onWindowResize, false );
+			}
+            
+			function onWindowResize() {
+				var aspect = window.innerWidth / window.innerHeight;
+				camera.left   = - frustumSize * aspect / 2;
+				camera.right  =   frustumSize * aspect / 2;
+				camera.top    =   frustumSize / 2;
+				camera.bottom = - frustumSize / 2;
+				camera.updateProjectionMatrix();
+				renderer.setSize( window.innerWidth, window.innerHeight );
+			}
+            
+			function animate() {
+                
+                for (var i = 0; i < cubes.length; i++) {
+                    if (i % 2 == 0) {
+                        cubes[i].rotation.x += 0.01;
+                        cubes[i].rotation.y += 0.01;
+                    } else {
+                        cubes[i].rotation.x += 0.01;
+                        cubes[i].rotation.y -= 0.01;
+                    }
+                }
+                
+                raycaster.setFromCamera(mouse, camera);
+                var intersects = raycaster.intersectObjects( scene.children );  
+
+                // if there is one (or more) intersections
+                if ( intersects.length > 0 && intersects[0].object.name.indexOf("cube") != -1) {
+                    //Found cube as object!
+                    if ( intersects[ 0 ].object != touchedCube ) {
+                        if (touchedCube) {
+                            var lastChar = touchedCube.name.substr(touchedCube.name.length - 1);
+                            cubeMouseOver(parseInt(lastChar), false);
+                        }
+                        
+                        touchedCube = intersects[ 0 ].object;
+
+                        var lastChar = touchedCube.name.substr(touchedCube.name.length - 1);
+                        cubeMouseOver(parseInt(lastChar), true);
+                    }
+                }
+                else { 
+                    // there are no intersections
+                    // restore previous intersection object (if it exists) to its original color
+                    if (touchedCube) {
+                        var lastChar = touchedCube.name.substr(touchedCube.name.length - 1);
+                        cubeMouseOver(parseInt(lastChar), false); 
+                    }
+                    touchedCube = null;
+                }
+                
+				requestAnimationFrame( animate );
+				render();
+			}
+            
+			function render() {
+				//camera.position.x = 800;
+				camera.position.z =  50;
+				camera.lookAt( 0, 0, 0 );
+				renderer.render( scene, camera );
+			}
+            
+            function onMouseMove(event) {
+                mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+                mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+            }
+            
+            function cubeMouseOver(num, check) {
+                if (check) {
+                    cubes[num - 1].material.color.setHex(0x00ff00);
+                    lines[num - 1].material.color = new THREE.Color( 0x00ff00 );         
+                    lines[num - 1].material.needsUpdate = true;
+                    boxLine.material.color = new THREE.Color( 0x00ff00);
+                    boxLine.material.needsUpdate = true;
+                } else {
+                    cubes[num - 1].material.color.setHex(0xffffff);
+                    lines[num - 1].material.color = new THREE.Color( 0xffffff );         
+                    lines[num - 1].material.needsUpdate = true;
+                    boxLine.material.color = new THREE.Color( 0xffffff);
+                    boxLine.material.needsUpdate = true;
+                }
+            }
+        </script>
+        </div>
+	</body>
+</html>
