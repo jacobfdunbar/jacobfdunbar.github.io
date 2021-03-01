@@ -46,7 +46,7 @@ h6 {
 
 .bg-primary {
   /*background-color: #F05F40 !important;*/
-    background: linear-gradient( rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.8) ), url('../images/Background1.png');
+    background: linear-gradient( rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.8) ), url('../img/Background1.png');
 }
 
 .bg-dark {
@@ -176,8 +176,7 @@ img::-moz-selection {
 header.masthead {
   padding-top: 10rem;
   padding-bottom: calc(10rem - 56px);
-  /*background-image: url("../images/Large%20City.gif");*/
-  background: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6) ), url('../images/Large%20City%202.gif');
+  background: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6) ), url('../img/Large\ City\ 2.gif');
   background-position: center center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
