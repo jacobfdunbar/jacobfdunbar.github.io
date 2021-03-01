@@ -1,0 +1,45 @@
+@font-face {
+font-family: bebas;
+src: url("fonts/bebas.ttf");
+}
+
+#header-icon {
+    width: 10%;
+}
+
+#title {
+    width: 50%;
+}
+
+#subtitle {
+    
+}
+
+.bebas-text {
+    font-family: bebas, 'Merriweather';
+    font-weight: normal;
+    font-style: normal;
+}
+
+.clear-font {
+    color: black;
+    text-decoration: none;
+}
+
+#img-boxA {
+    background: linear-gradient( rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6) ), url(../img/Building\ Panel\ Demo.gif);
+    background-position: center;
+    height: 300px;
+}
+
+#img-boxB {
+    background: linear-gradient( rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6) ), url(../img/Info\ Panel\ Demo.gif);
+    background-position: center;
+    height: 300px;
+}
+
+#img-boxC {
+    background: linear-gradient( rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6) ), url(../img/Menu\ Demo.gif);
+    background-position: center;
+    height: 300px;
+}
