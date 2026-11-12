@@ -399,12 +399,17 @@
       </section>
 
       <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="aboutme">
-        <div class="my-auto">
-          <h2 class="mb-5">About Me</h2>
-          <p>
-            Creating and playing games is one of my greatest passions in life and I love crafting and sharing those exciting play experiences with others.<br>
-            Outside of games I love listening to music, enjoying great food, playing disc golf, spending time with friends and family, and being a dad!
-          </p>
+        <div class="d-flex flex-md-row my-auto">
+          <div class="resume-image-large">
+            <img src="img/about_me.jpg" data-images="img/about_me.jpg, img/about_me_2.jpg, img/about_me_3.jpg, img/about_me_4.jpg, img/about_me_5.jpg, img/about_me_6.jpg" data-interval="4000" alt="About Me"/>
+          </div>
+          <div class="my-auto">
+            <h2 class="mb-5">About Me</h2>
+            <p>
+              Creating and playing games is one of my greatest passions in life and I love crafting and sharing those exciting play experiences with others.<br>
+              Outside of games I love listening to music, enjoying great food, playing disc golf, spending time with friends and family, and being a dad!
+            </p>
+          </div>
         </div>
       </section>
     </div>
@@ -418,6 +423,40 @@
 
     <!-- Custom scripts for this template -->
     <script src="js/resume.min.js"></script>
+
+    <!-- Cross-fade loop for any <img data-images="a.jpg, b.jpg, ..."> -->
+    <script>
+      document.querySelectorAll("img[data-images]").forEach(function (img) {
+        var images = img.dataset.images.split(",").map(function (s) { return s.trim(); }).filter(Boolean);
+        if (images.length < 2) return;
+        var interval = parseInt(img.dataset.interval, 10) || 4000;
+        images.forEach(function (src) { new Image().src = src; }); // preload
+
+        // Second layer for cross-fading; decorative copy, hidden from screen readers
+        var other = img.cloneNode();
+        other.removeAttribute("data-images");
+        other.alt = "";
+        other.setAttribute("aria-hidden", "true");
+        other.style.opacity = 0;
+        img.parentNode.appendChild(other);
+
+        var layers = [img, other], current = 0, index = 0;
+        setInterval(function () {
+          index = (index + 1) % images.length;
+          var front = layers[current], back = layers[1 - current];
+          // Put the incoming layer on top at opacity 0 instantly, then fade it in
+          back.style.transition = "none";
+          back.style.opacity = 0;
+          back.style.zIndex = 2;
+          front.style.zIndex = 1;
+          back.src = images[index];
+          void back.offsetWidth; // flush styles so the fade starts from 0
+          back.style.transition = "";
+          back.style.opacity = 1;
+          current = 1 - current;
+        }, interval);
+      });
+    </script>
 
   </body>
 
